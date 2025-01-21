@@ -1,0 +1,30 @@
+<!-- ebay_webapp/templates/customer_journey.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Journey Simulation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Customer Journey Simulation</h1>
+    <p>Below are two line charts demonstrating how NPS and churn probability 
+       might change over a customer's lifecycle.</p>
+
+    <div>
+      <h3>NPS Over Time</h3>
+      {{ nps_html|safe }}
+    </div>
+
+    <div>
+      <h3>Churn Probability Over Time</h3>
+      {{ churn_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

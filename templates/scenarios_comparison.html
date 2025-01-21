@@ -1,0 +1,35 @@
+<!-- ebay_webapp/templates/scenarios_comparison.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPS & Churn Scenarios Comparison</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Scenarios Comparison</h1>
+
+    <form method="POST" action="{{ url_for('scenarios_comparison') }}">
+      <label for="discount_rate">Discount Rate (%)</label>
+      <input type="number" step="any" id="discount_rate" name="discount_rate" value="{{ discount_rate }}" />
+      <br>
+
+      <label for="support_quality">Support Quality (1-10)</label>
+      <input type="number" step="any" id="support_quality" name="support_quality" value="{{ support_quality }}" />
+      <br>
+
+      <button type="submit" class="button">Compare</button>
+    </form>
+    
+    <p>Below is a bar chart comparing Baseline vs. Scenario for NPS and Churn Probability.</p>
+    <div>
+      {{ scenario_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

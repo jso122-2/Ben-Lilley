@@ -1,0 +1,21 @@
+<!-- ebay_webapp/templates/nps_live_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPS Live Dashboard - Mood of the Market</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Mood of the Market</h1>
+    <p>Observe our live gauge that reflects real-time customer sentiment.</p>
+    <div>
+      {{ gauge_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

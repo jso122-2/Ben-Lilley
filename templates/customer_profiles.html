@@ -1,0 +1,33 @@
+<!-- ebay_webapp/templates/customer_profiles.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Profiles</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Personalized Customer Profiles</h1>
+    <p>Below are profiles for each customer, including NPS classification, 
+       churn probability, and recommended actions.</p>
+
+    <div class="profiles">
+      {% for p in profiles %}
+        <div class="profile-card">
+          <h2>Customer ID: {{ p.customer_id }}</h2>
+          <p>Region: {{ p.region }}</p>
+          <p>NPS Score: {{ p.nps_score }}</p>
+          <p>NPS Classification: {{ p.nps_class }}</p>
+          <p>Churn Probability: {{ p.churn_prob|round(2) }}</p>
+          <p>Recommendation: {{ p.recommendation }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- ebay_webapp/templates/advanced_dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Interactive Dashboard</h1>
+    <p>Select a Region to filter results:</p>
+    <form method="GET" action="{{ url_for('advanced_dashboard') }}">
+      <select name="region">
+        <option value="All" {% if region == 'All' %}selected{% endif %}>All</option>
+        {% for r in regions_available %}
+        <option value="{{ r }}" {% if region == r %}selected{% endif %}>{{ r }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+
+    <h3 style="color: orange;">Average NPS in Filtered Data: {{ avg_nps }}</h3>
+    <h3 style="color: orange;">Average Churn Probability: {{ avg_churn }}</h3>
+
+    <div>
+      <h2>Bar Chart (NPS by Customer)</h2>
+      {{ bar_html|safe }}
+    </div>
+
+    <div>
+      <h2>Histogram (Churn Probability Distribution)</h2>
+      {{ hist_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

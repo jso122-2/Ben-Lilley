@@ -1,0 +1,41 @@
+<!-- ebay_webapp/templates/nps_simulation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPS Impact Simulation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .slider { width: 300px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">NPS Impact Simulation</h1>
+    <p>Adjust the sliders to see how key drivers affect our NPS score and customer sentiment.</p>
+    <form method="POST" action="{{ url_for('nps_simulation') }}">
+      <label for="support_quality">Support Quality:</label>
+      <input type="range" name="support_quality" id="support_quality" min="1" max="10" step="0.5" value="{{ support_quality }}" class="slider">
+      <span>{{ support_quality }}</span>
+      <br><br>
+      <label for="delivery_speed">Delivery Speed:</label>
+      <input type="range" name="delivery_speed" id="delivery_speed" min="1" max="10" step="0.5" value="{{ delivery_speed }}" class="slider">
+      <span>{{ delivery_speed }}</span>
+      <br><br>
+      <label for="pricing">Pricing:</label>
+      <input type="range" name="pricing" id="pricing" min="1" max="10" step="0.5" value="{{ pricing }}" class="slider">
+      <span>{{ pricing }}</span>
+      <br><br>
+      <button type="submit" class="button">Simulate Impact</button>
+    </form>
+    <hr>
+    <h2 style="color: orange;">Simulated Overall NPS: {{ overall_nps }}</h2>
+    <div>
+      {{ sentiment_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

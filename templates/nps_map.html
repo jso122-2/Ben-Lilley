@@ -1,0 +1,21 @@
+<!-- ebay_webapp/templates/nps_map.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Map of Sentiment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">Interactive Map of Sentiment</h1>
+    <p>Hover over a region to see the NPS score and key feedback.</p>
+    <div>
+      {{ map_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

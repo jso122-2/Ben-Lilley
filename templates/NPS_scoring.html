@@ -1,0 +1,24 @@
+<!-- ebay_webapp/templates/NPS_scoring.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPS Scoring</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">NPS Scoring Dashboard</h1>
+    <p>Below is a sample interactive chart showcasing NPS by region. 
+       Replace with your real data and visualizations.</p>
+    <!-- Insert dynamic Plotly / Bokeh chart -->
+    <div>
+      {{ graph_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

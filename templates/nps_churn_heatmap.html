@@ -1,0 +1,22 @@
+<!-- ebay_webapp/templates/nps_churn_heatmap.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPS/Churn Heatmap</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="button">Home</a>
+  </nav>
+  <div class="container">
+    <h1 style="color: orange;">NPS / Churn Heatmap</h1>
+    <p>This visualization shows a heatmap representation of how NPS and churn vary by region.</p>
+    <div>
+      {{ heatmap_html|safe }}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- ebay_webapp/templates/churn_interactive.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Churn Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+  <a href="{{ url_for('index') }}" class="button">Home</a>
+</nav>
+
+<div class="container">
+  <h1 style="color: orange;">Interactive Churn Prediction</h1>
+
+  <p>
+    Move the slider to pick a scenario between <strong>1</strong> and <strong>10</strong>.
+    Each scenario has different user data (tenure, age, average purchase) resulting in a distinct churn prediction.
+  </p>
+
+  <form method="POST" action="{{ url_for('churn_interactive') }}">
+    <label for="scenario_slider" style="margin-right: 10px;">Scenario #:</label>
+    <input 
+      type="range" 
+      id="scenario_slider" 
+      name="scenario_id" 
+      min="1" 
+      max="10" 
+      value="{{ scenario_id }}" 
+      oninput="scenarioOutput.value = scenario_slider.value" 
+    />
+
+    <!-- This displays the numeric value of the slider -->
+    <output id="scenarioOutput" style="font-size: 1.2em; color: orange;">
+      {{ scenario_id }}
+    </output>
+
+    <br><br>
+    <button type="submit" class="button">Update</button>
+  </form>
+
+  <hr>
+
+  <!-- Display scenario details -->
+  <h2>Scenario Details (ID: {{ scenario.id }})</h2>
+  <ul>
+    <li>Description: {{ scenario.desc }}</li>
+    <li>Tenure (months): {{ scenario.tenure_months }}</li>
+    <li>Age: {{ scenario.age }}</li>
+    <li>Avg Purchase: ${{ scenario.avg_purchase }}</li>
+  </ul>
+
+  <h3 style="color: orange;">Churn Prediction: {{ scenario.prediction }}</h3>
+
+  <div>
+    <h2>Churn Funnel Visualization</h2>
+    {{ funnel_html|safe }}
+  </div>
+</div>
+
+</body>
+</html>
