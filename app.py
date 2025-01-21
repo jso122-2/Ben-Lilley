@@ -14,7 +14,7 @@ app = Flask(__name__)
 # ===============================
 # LOAD REPRESENTATIVE DUMMY DATA
 # ===============================
-data_path = os.path.join(os.getcwd(), "models", "representative_dummy_data.csv")
+data_path = "models/representative_dummy_data.csv"  # Relative path
 churn_data = pd.read_csv(data_path)
 
 def predict_churn(tenure, age, avg_purchase):
@@ -294,7 +294,5 @@ def customer_profiles():
     profiles = data_copy.to_dict(orient='records')
     return render_template('customer_profiles.html', profiles=profiles)
 
-if __name__ == "__main__":
-    from waitress import serve
-    logging.info("Starting Flask app with Waitress...")
-    serve(app, host="0.0.0.0", port=5000)
+if __name__ == '__main__':
+    app.run(debug=True)
