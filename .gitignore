@@ -1,0 +1,11 @@
+# Ignore model files in the models directory
+models/*.h5
+models/*.pkl
+models/*.csv
+
+# You may also want to ignore any temporary files, logs, etc.
+*.log
+*.tmp
+"models/*.h5" 
+"models/*.pkl" 
+"models/*.csv" 
